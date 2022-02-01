@@ -153,7 +153,7 @@ class User < ApplicationRecord
     format_abbr = name_abbr_config[:format_abbr].presence || format_abbr_default.presence
     format_err_msg = name_abbr_config[:format_abbr_err_msg].presence || format_err_msg_default.presence
 
-    return if name_abbreviation.match?(format_abbr)
+    return if not name_abbreviation.nil? and name_abbreviation.match?(format_abbr)
 
     errors.add(:name_abbreviation, format_err_msg)
   end
